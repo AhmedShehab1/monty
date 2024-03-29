@@ -20,11 +20,11 @@ int getOpCode(stack_t **stack, char *line)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop} };
-	token = strtok(line, " \n");
+	token = strtok(line, " \n\t");
 	if (token != NULL)
 	{
 		if (!strcmp(token, inst_s[0].opcode))
-		{ token = strtok(NULL, " \n");
+		{ token = strtok(NULL, " \n\t");
 			result = strtol(token, &endptr, 10);
 			if (*endptr == '\0' || *endptr == '\n')
 			{ inst_s[0].f(stack, result);
