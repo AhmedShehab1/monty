@@ -23,9 +23,9 @@ int getOpCode(stack_t **stack, char *line)
 	{
 		if (!strcmp(token, inst_s[0].opcode))
 		{ token = strtok(NULL, " \n\t");
-		 if (token != NULL)
-			result = strtol(token, &endptr, 10);
-			if (*endptr == '\0' || *endptr == '\n')
+			if (token != NULL)
+				result = strtol(token, &endptr, 10);
+			if ((*endptr == '\0' || *endptr == '\n'))
 			{ inst_s[0].f(stack, result);
 				return (0);
 			}
@@ -44,7 +44,7 @@ int getOpCode(stack_t **stack, char *line)
 					return (0); }
 				i++;
 				}
-			return (1);
+				return (1);
 			}
 	}
 	return (0);
