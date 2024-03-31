@@ -45,5 +45,9 @@ void add(stack_t **stack,  int line_number);
 void nop(stack_t **stack,  int line_number);
 int getOpCode(stack_t **stack, char *line);
 void free_stack(stack_t **head);
+void sub(stack_t **stack, int line_number);
+void __div(stack_t **stack, int line_number);
+void mul(stack_t **stack, int line_number);
+void mod(stack_t **stack, int line_number);
 #define __UNUSED_PARAM(param) (void)(param)
 #endif

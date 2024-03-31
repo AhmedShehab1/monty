@@ -14,17 +14,16 @@ int getOpCode(stack_t **stack, char *line)
 	int i = 1;
 
 	instruction_t inst_s[] = { {"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop} };
-	token = strtok(line, "\n\t ");
+		{"pall", pall}, {"pint", pint},
+		{"pop", pop}, {"swap", swap},
+		{"add", add}, {"nop", nop},
+		{"sub", sub}, {"div", __div},
+		{"mul", mul}, {"mod", mod} };
+	token = strtok(line, " \n\t");
 	if (token != NULL)
 	{
 		if (!strcmp(token, inst_s[0].opcode))
-		{ token = strtok(NULL, "\n\t ");
+		{ token = strtok(NULL, " \n\t");
 			result = strtol(token, &endptr, 10);
 			if (*endptr == '\0' || *endptr == '\n')
 			{ inst_s[0].f(stack, result);
@@ -37,7 +36,7 @@ int getOpCode(stack_t **stack, char *line)
 		}
 		else
 		{
-			while (i < 6)
+			while ((unsigned long)i < sizeof(inst_s) / sizeof(inst_s[0]))
 				{
 				if (!strcmp(inst_s[i].opcode, token))
 				{

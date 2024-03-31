@@ -10,7 +10,6 @@ int main(int argc, char *argv[])
 {
 	FILE *stream;
 	char *line = malloc(BUFFER_SIZE);
-	size_t len = BUFFER_SIZE - 1;
 	stack_t *head = NULL;
 
 	if (argc != 2)
@@ -24,7 +23,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while ((line = fgets(line, len, stream)))
+	while (fgets(line, BUFFER_SIZE, stream))
 	{
 		line_number++;
 		if (getOpCode(&head, line))

@@ -83,3 +83,25 @@ void nop(stack_t **stack, int line_number)
 	__UNUSED_PARAM(stack);
 	__UNUSED_PARAM(line_number);
 }
+/**
+ * sub - subtracts the top element of the stack from the
+ * second top element of the stack.
+ * Usage: sub
+ * @stack: Top Node Of Stack
+ * @line_number: Current Line In Monty ByteCode File
+*/
+void sub(stack_t **stack, int line_number)
+{
+	if (!isEmpty(*stack))
+	{
+		if ((*stack)->next != NULL)
+		{
+			(*stack)->next->n = (*stack)->next->n - (*stack)->n;
+			pop(stack, line_number);
+			return;
+		}
+	}
+	free_stack(stack);
+	fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+	exit(EXIT_FAILURE);
+}
