@@ -44,7 +44,8 @@ int getOpCode(stack_t **stack, char *line)
 					return (0); }
 				i++;
 				}
+			return (1);
 			}
 	}
-	return (1);
+	return (0);
 }
