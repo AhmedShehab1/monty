@@ -36,14 +36,15 @@ int getOpCode(stack_t **stack, char *line)
 		}
 		else
 		{
-			while ((unsigned long)i < sizeof(inst_s) / sizeof(inst_s[0]))
+			while ((unsigned long)i < (sizeof(inst_s) / sizeof(inst_s[0])))
 				{
 				if (!strcmp(inst_s[i].opcode, token))
 				{
-					inst_s[i].f(stack, line_number); }
+					inst_s[i].f(stack, line_number);
+					return (0); }
 				i++;
 				}
-			return (0); }
-		return (-1); }
-	return (0);
+			}
+	}
+	return (1);
 }

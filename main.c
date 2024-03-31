@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		line_number++;
 		if (getOpCode(&head, line))
 		{
-			fprintf(stderr, "L%d: unknown instruction <opcode>\n", line_number);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, line);
 			exit(EXIT_FAILURE);
 		}
 	}
