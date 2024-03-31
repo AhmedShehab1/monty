@@ -13,8 +13,7 @@ int getOpCode(stack_t **stack, char *line)
 	long int result;
 	int i = 1;
 
-	instruction_t inst_s[] = { {"push", push},
-		{"pall", pall}, {"pint", pint},
+	instruction_t inst_s[] = { {"push", push}, {"pall", pall}, {"pint", pint},
 		{"pop", pop}, {"swap", swap},
 		{"add", add}, {"nop", nop},
 		{"sub", sub}, {"div", __div},
@@ -24,6 +23,7 @@ int getOpCode(stack_t **stack, char *line)
 	{
 		if (!strcmp(token, inst_s[0].opcode))
 		{ token = strtok(NULL, " \n\t");
+		 if (token != NULL)
 			result = strtol(token, &endptr, 10);
 			if (*endptr == '\0' || *endptr == '\n')
 			{ inst_s[0].f(stack, result);
